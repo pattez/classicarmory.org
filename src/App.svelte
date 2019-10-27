@@ -1,15 +1,18 @@
 <script>
-	let name = 'world';
+	import Router from 'svelte-spa-router';
+  import Header from '@/components/Header.svelte';
+
+	import routes from '@/routes';
 </script>
 
-<h1>Hello bro {name}!</h1>
+<Header/>
+<div class="content">
+<Router {routes}/>
+</div>
 
-<!-- <style type="text/stylus" scoped>
-	h1
-		color: red
-</style> -->
-
-<style lang="stylus" scoped>
-	h1
-		color: red
+<style lang="stylus">
+	.content
+		width: calc(100% - 60px)
+		height: calc(100% - 130px)
+		margin: 0 auto
 </style>

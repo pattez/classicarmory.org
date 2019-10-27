@@ -3,10 +3,11 @@ import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
-import autoPreprocess from 'svelte-preprocess'
+import alias from 'rollup-plugin-alias';
+const path = require('path');
 
+const config = require('./svelte.config');
 const production = !process.env.ROLLUP_WATCH;
-
 export default {
 	input: 'src/main.js',
 	output: {
@@ -16,15 +17,22 @@ export default {
 		file: 'public/bundle.js'
 	},
 	plugins: [
+		alias({
+			resolve: ['', '.svelte', '.js'],
+			entries: [
+				{find: '@', replacement: path.resolve(__dirname, 'src')}
+			]
+		}),
 		svelte({
+			...config,
+			// ...config.preprocess,
 			// enable run-time checks when not in production
 			// dev: !production,
 			// we'll extract any component CSS out into
 			// a separate file  better for performance
 			css: css => {
 				css.write('public/bundle.css');
-			},
-			preprocess: autoPreprocess()
+			}
 		}),
 
 		// If you have external dependencies installed from
