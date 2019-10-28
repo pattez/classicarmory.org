@@ -32,6 +32,10 @@ a:visited {
 	color: rgb(0,80,160);
 }
 
+span {
+	color: #c5c6c7;
+}
+
 label {
 	display: block;
 }
