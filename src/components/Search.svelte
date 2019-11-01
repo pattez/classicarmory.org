@@ -8,7 +8,7 @@
 <input class="input{error ? ' error' : ''}" type="text" bind:value={value}  placeholder={placeholder || 'search'} autofocus/>
 
 
-<style lang="stylus">
+<style type="text/stylus">
     .input
       width: 100%
       height: 100%
