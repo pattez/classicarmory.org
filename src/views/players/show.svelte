@@ -18,8 +18,24 @@
     4: "#a335ee",
     5: "#ff8000"
   };
+  let hovering;
+
+  const hover = () => {
+    console.log('hej')
+  }
+
+	function enter() {
+		hovering = true;
+	}
+
+	function leave() {
+		hovering = false;
+  }
+
   const getPlayerData = async () => {
     const { data } = await get({ url: $location });
+    const data2 = await get({url: `${$location}/gear`});
+    const playerGear = data2.data;
     let gear = [];
     for (const key of Object.keys(data.playerGear)) {
       if (data.playerGear[key]) {
@@ -27,6 +43,8 @@
           `${WOWHEAD_ITEM_URL}${data.playerGear[key]}`
         );
         gear.push({
+          slot_id: key,
+          more: (playerGear[key] && playerGear[key].length > 1) ? '...': '',
           slot: INVENTORY_ITEMS[key],
           id: data.playerGear[key],
           name: item.data.name,
@@ -55,6 +73,13 @@
     h1
       span
         font-size: 0.5em
+
+  .item > div,span
+    padding-left: 5px
+
+  .item
+    display: flex
+
 </style>
 
 
@@ -63,7 +88,7 @@
   <Loading />
 {:then data}
   <div class="info">
-    <h1>{data.player.name} {data.player.race} <span>{data.player.guildRank} of {`<${data.player.guild}>`}</span></h1>
+    <h1>{data.player.name} <span>Level {data.player.level} {data.player.race} {data.player.class} </span> <span>{data.player.guildRank} of {`<${data.player.guild}>`}</span></h1>
     <span></span>
     <span>Last seen by {data.player.uploader} at:</span>
     <span>{formatDate(data.player.lastSeen)}</span>
@@ -71,10 +96,15 @@
   <ul>
     {#each data.gear as i}
       <li>
+      <div class="item">
           <span>{i.slot}:</span>
         <a href="#" data-wowhead={`item=${i.id}&domain=classic`}>
-          <span style={`color:${i.color}`}>{i.name}</span>
+          <span style={`color:${i.color}`}>{i.name} </span>
         </a>
+        <div class="more" on:mouseenter={enter} on:mouseleave={leave}>
+          {i.more}
+        </div>
+        </div>
       </li>
     {/each}
   </ul>
