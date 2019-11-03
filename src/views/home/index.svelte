@@ -4,13 +4,16 @@
   import Table from '@/components/Table.svelte';
   import { onMount } from 'svelte';
   import {post} from '@/lib/axios';
-  import {genders, formatDate} from '@/globals'
+  import {formatDate} from '@/globals'
+  import Loading from '@/components/Loading.svelte';
 	import {push} from 'svelte-spa-router';
-
   let input = '';
-  let players = null;
+  let players = [];
+  let lastInput = '';
   let searchError = null;
-
+  let offset = 0;
+  let showLoadMore = false;
+  let loading = false;
   let columns = [
     {name: 'Name', key: 'name'},
     {name: 'Server', key: 'server'},
@@ -19,41 +22,69 @@
     {name: 'Level', key: 'level'},
     {name: 'Race', key: 'race'},
     {name: 'Gender', key: 'gender'},
+    {name: 'Class', key: 'class'},
     {name: 'Last seen', key: 'lastSeen'},
   ];
 
-  async function getPlayers() {
+  async function getPlayers(o) {
     if (input) {
+      if(lastInput !== input) {
+        players = [];
+        loading = true;
+      }
+      lastInput = input;
       searchError = false;
+      loading = true;
+      if (players.length > 0) {
+        loading = false;
+      }
       const {data} = await post({
         url: '/players',
-        name: input
+        name: input,
+        offset: o
       });
-      players = data.map((i) => ({
-        ...i,
-        gender: genders[i.gender],
-        lastSeen: formatDate(i.lastSeen)
-      }))
+      showLoadMore = data.length >= 50;
+      if(players.length > 0) {
+        players = players.concat(data)
+      } else {
+        players = data;
+      }
+      players = players.map((i) => ({
+          ...i,
+          lastSeen: formatDate(i.lastSeen)
+        }));
+      loading = false;
     } else {
       searchError = true;
+    }
+  };
+
+
+  async function fetchMore() {
+    if(players.length > 0) {
+      offset = offset + 50;
+      await getPlayers(offset)
     }
   };
 
   async function playerClick({detail}) {
     push(`/players/${detail.id}`);
   }
-
 	onMount(() => {
     document.addEventListener('keyup', (e) => {
       if(e.key === 'Enter' && input !== '') {
         getPlayers();
       }
     })
-	});
+  });
+
+
 </script>
 
+
 <div class="content">
-  {#if !players}
+  {#if !loading}
+  {#if players.length === 0}
   <div class="form">
   <div class="img">
   <img src="assets/images/armory.png" alt="background image"/>
@@ -66,7 +97,7 @@
   </div>
   </div>
   {/if}
-  {#if players}
+  {#if players.length > 0}
   <div class="players">
   <div class="top">
     <h1>Players</h1>
@@ -74,9 +105,13 @@
     <Button text="search" on:click={getPlayers}/>
   </div>
   <div class="table">
-    <Table items={players} {columns} on:click={playerClick}/>
+    <Table items={players} {columns} on:click={playerClick} showLoadMore={showLoadMore} on:load-more={fetchMore}/>
   </div>
   </div>
+  {/if}
+  {/if}
+  {#if loading}
+    <Loading/>
   {/if}
 </div>
 

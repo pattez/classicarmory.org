@@ -1,27 +1,19 @@
 {
+  "showOutput": "never",
+  "debug.internalConsoleOptions": "neverOpen",
+  "eslint.options": { "configFile": "./.eslintrc.js" },
+  "eslint.nodePath": "./node_modules",
+  "eslint.lintTask.options": "-c ./.eslintrc.js",
   "eslint.enable": true,
-  "files.associations": {
-    "*.svelte": "html"
-  },
   "eslint.validate": [
     "javascript",
     "javascriptreact",
-    "svelte",
-    {
-      "language": "vue",
-      "autoFix": true
-    },
-    {
-      "language": "svelte",
-      "autoFix": true
-    },
     {
       "language": "html",
       "autoFix": true
     }
   ],
-  "eslint.options": { "configFile": "./.eslintrc.js" },
-  "eslint.nodePath": "./node_modules",
-  "eslint.lintTask.options": "-c ./.eslintrc.js",
-  "vetur.validation.template": false
+  "files.associations": {
+    "*.svelte": "html"
+  }
 }

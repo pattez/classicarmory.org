@@ -1,8 +1,8 @@
 import home from './home'
 import players from './players'
 const routes = {
-  ...home,
-  ...players
+    ...home,
+    ...players,
 }
 
-export default routes;
+export default routes

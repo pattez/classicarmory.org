@@ -1,12 +1,14 @@
 <script>
-	import { createEventDispatcher } from 'svelte';
+	import { createEventDispatcher, onMount } from 'svelte';
 
   export let items = null;
   export let columns = null;
+  export let showLoadMore = null;
 
 	const dispatch = createEventDispatcher();
-
-
+  $: {
+    console.log(showLoadMore);
+  }
 </script>
 
 <table>
@@ -23,9 +25,16 @@
     </tr>
   {/each}
 </table>
+{#if showLoadMore}
+<div class="more" on:click={() => dispatch('load-more')}>
+  Load more
+</div>
+{/if}
 
 
 <style lang="stylus">
+  @require 'styles/colors'
+
   tr
     width: 100%
     cursor: pointer
@@ -34,7 +43,7 @@
       opacity: 0.5
 
   .cell
-    border: 1px solid white
+    border: 1px solid $primary-4
 
   th, td
     padding: 20px
@@ -43,4 +52,15 @@
   table
     width: 100%
     height: 100%
+
+  .more
+    width: 100%
+    display: flex
+    justify-content: center
+    align-items: center
+    height: 40px
+    cursor: pointer
+    &:hover
+      background-color: $primary-1
+      opacity: 0.5
 </style>

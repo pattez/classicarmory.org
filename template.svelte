@@ -6,5 +6,6 @@
 
 
 <style lang="stylus">
+  /* prettier-ignore */
 
 </style>

@@ -1,0 +1,28 @@
+@require 'colors'
+
+$fullscreen
+  position: fixed
+  width: 100vw
+  height: 100vh
+  top: 0
+  left: 0
+
+
+$absolute-center
+  position: absolute
+  margin: auto
+  width: fit-content
+  height: fit-content
+  max-height: calc(100vh - 40px);
+  left: 0
+  right: 0
+  top: 0
+  bottom: 0
+
+$z-index-dialog = 1000
+
+
+$card
+  background-color: white
+  overflow: hidden
+  box-shadow: $card-shadow
