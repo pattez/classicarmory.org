@@ -71,9 +71,10 @@
     push(`/players/${detail.id}`);
   }
 	onMount(() => {
-    document.addEventListener('keyup', (e) => {
+    document.addEventListener('keyup', async (e) => {
       if(e.key === 'Enter' && input !== '') {
-        getPlayers();
+        offset = 0;
+        await getPlayers(offset);
       }
     })
   });
