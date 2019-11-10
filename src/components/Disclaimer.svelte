@@ -4,14 +4,12 @@
 </script>
 
 
-<div class="content">
-  <div class="disclaimer">
-    <div class="text">
-    This website uses Google Analytics tracking to monitor use of the website.  This is done in order to best enable us to maintain the website and ensure it is fulfilling the requirements of its users.
-     We do not allow the data collected through Google Analytics to be shared and it does not contain information that can be used to identify you.
-    If you do not wish to be tracked in this way you may revoke this permission through appropriate setting in your web browsers security settings
-    <img src="assets/images/cross.png" on:click={() => dispatch('click', 'disclaimer')}/>
-    </div>
+<div class="disclaimer">
+  <div class="text">
+  This website uses Google Analytics tracking to monitor use of the website.  This is done in order to best enable us to maintain the website and ensure it is fulfilling the requirements of its users.
+    We do not allow the data collected through Google Analytics to be shared and it does not contain information that can be used to identify you.
+  If you do not wish to be tracked in this way you may revoke this permission through appropriate setting in your web browsers security settings
+  <img src="assets/images/cross.png" on:click={() => dispatch('click', 'disclaimer')}/>
   </div>
 </div>
 
@@ -37,4 +35,8 @@
     &:hover
       transform: scale(1.1)
 
+	.disclaimer
+		position: absolute
+		top: 58px
+		z-index: 200
 </style>

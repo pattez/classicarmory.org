@@ -17,7 +17,7 @@
 
 </script>
 <Header/>
-<div class="content">
+<div class="content{showDisclaimer ? ' disclaimer' : ''}">
 <Router {routes}/>
 </div>
 {#if showDisclaimer}
@@ -28,4 +28,8 @@
 		width: calc(100% - 60px)
 		height: calc(100% - 130px)
 		margin: 0 auto
+
+		&.disclaimer
+			 margin-top: 70px
+
 </style>
