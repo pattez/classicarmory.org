@@ -3,6 +3,7 @@ import resolve from 'rollup-plugin-node-resolve'
 import commonjs from 'rollup-plugin-commonjs'
 import livereload from 'rollup-plugin-livereload'
 import { terser } from 'rollup-plugin-terser'
+import babel from 'rollup-plugin-babel';
 import alias from 'rollup-plugin-alias'
 const path = require('path')
 

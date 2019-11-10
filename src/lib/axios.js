@@ -13,7 +13,6 @@ async function post({ url, name, offset }) {
         name,
         offset
     })
-    console.log(data)
     return data
 }
 

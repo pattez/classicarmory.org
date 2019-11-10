@@ -6,9 +6,7 @@
   export let showLoadMore = null;
 
 	const dispatch = createEventDispatcher();
-  $: {
-    console.log(showLoadMore);
-  }
+
 </script>
 
 <table>

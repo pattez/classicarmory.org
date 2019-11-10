@@ -5,7 +5,6 @@
   onMount(() => {
     const dialog = document.querySelector('.dialog');
     document.addEventListener('keyup', e => {
-      console.log(e.key);
       if(e.key === 'Escape') {
         dispatch('escape');
         show = false;
