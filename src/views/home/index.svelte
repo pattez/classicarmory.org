@@ -79,6 +79,12 @@
     })
   });
 
+  const clickSearch = async () => {
+    if(input !== '') {
+      offset = 0;
+      await getPlayers(offset);
+    }
+  }
 
 </script>
 
@@ -94,7 +100,7 @@
     <Search placeholder="pattez gehennas" bind:value={input} error={searchError}/>
   </div>
   <div class="button">
-    <Button text="search" on:click={getPlayers}/>
+    <Button text="search" on:click={clickSearch}/>
   </div>
   </div>
   {/if}
@@ -103,7 +109,7 @@
   <div class="top">
     <h1>Players</h1>
     <Search placeholder="pattez gehennas" bind:value={input} error={searchError}/>
-    <Button text="search" on:click={getPlayers}/>
+    <Button text="search" on:click={clickSearch}/>
   </div>
   <div class="table">
     <Table items={players} {columns} on:click={playerClick} showLoadMore={showLoadMore} on:load-more={fetchMore}/>
