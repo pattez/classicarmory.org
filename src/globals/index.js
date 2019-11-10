@@ -1,5 +1,5 @@
 const development = location.href && location.href.includes('localhost')
-const BACKEND_URL = development ? 'http://localhost:8090' : 'https://armory-backend.whydoisuckatvideogames.com';
+const BACKEND_URL = development ? 'http://localhost:8090' : 'https://armory-backend.whydoisuckatvideogames.com:8090';
 const genders = {
     1: 'Neutrum / Unknown',
     2: 'Male',
