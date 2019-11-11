@@ -1,16 +1,22 @@
 
 <script>
+	import {push} from 'svelte-spa-router';
+
   const githubLink = () => {
     window.open('https://github.com/pattez');
   }
   const discordLink = () => {
     window.open('https://discord.gg/cVDp6en');
   }
+
+  const home = () => {
+    push('/');
+  };
 </script>
 
 <div class="header">
   <div class="content">
-  <div class="title">
+  <div class="title" on:click={home}>
     WoW Classic Armory
     <span class="beta">
       Beta
@@ -42,6 +48,10 @@
   .title
     font-weight: bold
     color: $primary-3
+    cursor: pointer
+
+    &:hover
+      transform: scale(1.1)
 
   .github
     display: flex
