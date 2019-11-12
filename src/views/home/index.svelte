@@ -93,11 +93,15 @@
   {#if !loading}
   {#if players.length === 0}
   <div class="form">
+  <div class="info">
+  <span>WoW Classic Armory uses an exe client to upload data gathered by an addon to display data on this site.</span>
+  <span>Currently upload is closed to friends as this service is still in beta - Client, Addon and Website will be open source eventually.</span>
+  </div>
   <div class="img">
   <img src="assets/images/armory.png" alt="background image"/>
   </div>
   <div class="search">
-    <Search placeholder="pattez gehennas" bind:value={input} error={searchError}/>
+    <Search placeholder="Player name or server" bind:value={input} error={searchError}/>
   </div>
   <div class="button">
     <Button text="search" on:click={clickSearch}/>
@@ -122,7 +126,7 @@
   {/if}
 </div>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
   .content
     display: flex
     justify-content: center
@@ -131,7 +135,6 @@
     align-items: center
 
   .search
-    width: 500px
     margin-bottom: 10px
 
   .button
@@ -142,8 +145,16 @@
     justify-content: center
     display: flex
     margin-bottom: 10px
+    margin-top: 10px
 
   .players
     height: 100%
+
+  span
+    font-weight: bold
+
+  .info
+    width: 800px
+    text-align: center
 
 </style>

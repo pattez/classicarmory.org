@@ -1,7 +1,7 @@
 
 <script>
 	import {push} from 'svelte-spa-router';
-
+  import {FRONTEND_URL} from '@/globals';
   const githubLink = () => {
     window.open('https://github.com/pattez');
   }
@@ -10,7 +10,7 @@
   }
 
   const home = () => {
-    push('/');
+    window.location = FRONTEND_URL
   };
 </script>
 

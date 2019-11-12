@@ -1,5 +1,6 @@
 const development = location.href && location.href.includes('localhost')
 const BACKEND_URL = development ? 'http://localhost:8090' : 'https://armory-backend.whydoisuckatvideogames.com';
+const FRONTEND_URL = development ? 'http://localhost:5000' : 'https://armory.whydoisuckatvideogames.com';
 const genders = {
     1: 'Neutrum / Unknown',
     2: 'Male',
@@ -43,4 +44,4 @@ const INVENTORY_ITEMS = {
     slot_19: 'Tabard',
 }
 
-export { BACKEND_URL, genders, zerolize, formatDate, INVENTORY_ITEMS }
+export { BACKEND_URL, genders, zerolize, formatDate, INVENTORY_ITEMS, FRONTEND_URL }
