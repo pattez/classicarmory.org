@@ -94,8 +94,8 @@
   {#if players.length === 0}
   <div class="form">
   <div class="info">
-  <span>WoW Classic Armory uses an exe client to upload data gathered by an addon to display data on this site.</span>
-  <span>Currently upload is closed to friends as this service is still in beta - Client, Addon and Website will be open source eventually.</span>
+  <span>WoW Classic Armory uses an executable client to upload data gathered by a lightweight addon to display your character data on <a href="https://classicarmory.org">https://classicarmory.org.</a></span>
+  <span>We are currently in a closed beta phase of development, with upload privileges being limited to friends & donators.  Our eventual plan is to make the addon, client and website open source<span>
   </div>
   <div class="img">
   <img src="assets/images/armory.png" alt="background image"/>
@@ -127,6 +127,11 @@
 </div>
 
 <style lang="stylus" scoped>
+  @require 'styles/colors'
+
+  a
+    color: $primary-4
+
   .content
     display: flex
     justify-content: center
@@ -151,7 +156,8 @@
     height: 100%
 
   span
-    font-weight: bold
+    line-height: 25px
+    font-weight: 500
 
   .info
     width: 800px
