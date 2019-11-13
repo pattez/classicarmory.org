@@ -125,6 +125,9 @@
     <Loading/>
   {/if}
 </div>
+    <div class="donations">
+    Donations: Myaka 0.0010 BTC
+  </div>
 
 <style lang="stylus" scoped>
   @require 'styles/colors'
