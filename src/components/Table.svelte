@@ -33,15 +33,20 @@
 <style lang="stylus">
   @require 'styles/colors'
 
+  table
+    border-collapse: collapse
+
+
   tr
     width: 100%
     cursor: pointer
 
+  tr:not(:first-child)
+    border-bottom: 1px solid $primary-4
+
+
     &.row:hover
       opacity: 0.5
-
-  .cell
-    border: 1px solid $primary-4
 
   th, td
     padding: 20px
