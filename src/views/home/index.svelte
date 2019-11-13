@@ -125,9 +125,11 @@
     <Loading/>
   {/if}
 </div>
-    <div class="donations">
+{#if !loading && players.length === 0}
+  <div class="donations">
     Donations: 1. Myaka 0.0010 BTC
   </div>
+{/if}
 
 <style lang="stylus" scoped>
   @require 'styles/colors'
