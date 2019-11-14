@@ -38,6 +38,9 @@
   },
   "scripts": {
     "build": "rollup -c",
-    "dev": "run-p start:dev autobuild"
+    "autobuild": "rollup -c -w",
+    "dev": "run-p start:dev autobuild",
+    "start": "sirv public --single",
+    "start:dev": "sirv public --single --dev"
   }
 }
