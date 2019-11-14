@@ -16,18 +16,25 @@
   const patreon = () => {
     window.open(PATREON_URL);
   }
+
+  const honor = () => {
+    push('/honor')
+  }
 </script>
 
 <div class="header">
   <div class="content">
-  <div class="title" on:click={home}>
-  <div class="text">
+  <div class="title">
+  <div class="text" on:click={home}>
     <span>
     WoW Classic Armory
     <span class="beta">
       Beta
     </span>
     </span>
+  </div>
+  <div class="honor" on:click={honor}>
+    Honor
   </div>
   </div>
   <div class="github">
@@ -66,6 +73,12 @@
     height: 100%
     display: flex
     align-items: center
+
+  .honor
+    cursor: pointer
+
+    &:hover
+      opacity: 0.7
 
 
   .text
