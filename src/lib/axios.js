@@ -16,4 +16,12 @@ async function post({ url, name, offset }) {
     return data
 }
 
-export { get, post }
+async function axiosPost({url, body}) {
+    const u = `${BACKEND_URL}${url}`
+    const data = await axios.post(u, {
+        ...body
+    })
+    return data
+};
+
+export { get, post, axiosPost}
