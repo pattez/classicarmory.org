@@ -49,7 +49,7 @@
       opacity: 0.5
 
   th, td
-    padding: 20px
+    padding: 10px
     text-align: left
 
   table
