@@ -5,7 +5,7 @@
   export let text;
 </script>
 
-<button class="button" on:click={() => dispatch('click', 'click')}>{text}</button>
+<button class="button" on:click={() => dispatch('click', 'click')}>{text}<slot/></button>
 
 
 <style lang="stylus">
@@ -20,6 +20,7 @@
     display: flex
     align-items: center
     justify-content: center
+    width: 100%
 
     &:hover
       opacity: 0.6
