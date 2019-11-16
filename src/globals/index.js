@@ -2,6 +2,9 @@ const development = location.href && location.href.includes('localhost')
 const BACKEND_URL = development ? 'http://localhost:8090' : 'https://armory-backend.whydoisuckatvideogames.com';
 const FRONTEND_URL = development ? 'http://localhost:5000' : 'https://classicarmory.org';
 const PATREON_URL = 'https://www.patreon.com/classicarmory';
+const DISCORD_URL = 'https://discord.gg/cVDp6en';
+const ADDON_URL = 'https://github.com/pattez/pattez_armory';
+
 const genders = {
     1: 'Neutrum / Unknown',
     2: 'Male',
@@ -45,4 +48,4 @@ const INVENTORY_ITEMS = {
     slot_19: 'Tabard',
 }
 
-export { BACKEND_URL, genders, zerolize, formatDate, INVENTORY_ITEMS, FRONTEND_URL, PATREON_URL }
+export { BACKEND_URL, genders, zerolize, formatDate, INVENTORY_ITEMS, FRONTEND_URL, PATREON_URL, DISCORD_URL, ADDON_URL }

@@ -10,6 +10,7 @@ html {
 	height: 100vh;
 }
 
+
 body {
 	margin: 0;
 	padding: 0;
@@ -20,7 +21,7 @@ body {
 }
 
 a {
-	color: rgb(0,100,200);
+	color: #66fcf1;
 	text-decoration: none;
 }
 

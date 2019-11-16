@@ -4,7 +4,7 @@
   import Table from '@/components/Table.svelte';
   import { onMount } from 'svelte';
   import {post} from '@/lib/axios';
-  import {formatDate} from '@/globals'
+  import {formatDate, ADDON_URL} from '@/globals'
   import Loading from '@/components/Loading.svelte';
 	import {push} from 'svelte-spa-router';
   let input = '';
@@ -94,8 +94,8 @@
   {#if players.length === 0}
   <div class="form">
   <div class="info">
-  <span>WoW Classic Armory uses an executable client to upload data gathered by a lightweight addon to display your character data on <a href="https://classicarmory.org">https://classicarmory.org.</a></span>
-  <span>We are currently in a closed beta phase of development, with upload privileges being limited to friends & donators.  Our eventual plan is to make the addon, client and website open source<span>
+  <span>WoW Classic Armory uses a lightweight addon <a href={ADDON_URL}>{ADDON_URL}</a> to display your character data on <a href="https://classicarmory.org">https://classicarmory.org.</a></span>
+  <span>We are currently in a closed beta phase of development<span>
   </div>
   <div class="img">
   <img src="assets/images/armory.png" alt="background image"/>

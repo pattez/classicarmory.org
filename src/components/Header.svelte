@@ -20,6 +20,9 @@
   const honor = () => {
     push('/honor')
   }
+  const upload = () => {
+    push('/upload')
+  }
 </script>
 
 <div class="header">
@@ -35,6 +38,9 @@
   </div>
   <div class="honor" on:click={honor}>
     Honor
+  </div>
+  <div class="upload" on:click={upload}>
+    Upload
   </div>
   </div>
   <div class="github">
@@ -74,11 +80,14 @@
     display: flex
     align-items: center
 
-  .honor
+  .honor, .upload
     cursor: pointer
 
     &:hover
       opacity: 0.7
+
+  .upload
+    margin-left: 15px
 
 
   .text
