@@ -29,6 +29,11 @@
       {/each}
     </tr>
   {/each}
+  {#if items.length === 0}
+    <div class="empty">
+      No data
+    </div>
+  {/if}
 </table>
 {#if showLoadMore}
 <div class="more" on:click={() => dispatch('load-more')}>
@@ -43,6 +48,13 @@
   table
     border-collapse: collapse
 
+  .empty
+    position: absolute
+    margin: auto
+    width: fit-content
+    height: fit-content
+    left: 0
+    right: 0
 
   tr
     width: 100%
