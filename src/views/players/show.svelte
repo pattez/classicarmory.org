@@ -4,6 +4,7 @@
   import { get } from '@/lib/axios';
   import axios from 'axios';
   import Loading from '@/components/Loading.svelte';
+  import Image from '@/components/Image.svelte';
 
   import { INVENTORY_ITEMS, formatDate } from '@/globals';
   let player = {
@@ -73,6 +74,8 @@
   li
     padding: 3px 0px 3px 0px
 
+  .images
+    margin-top: 10px
 </style>
 
 
@@ -83,8 +86,12 @@
     <div class="info">
       <h1>
          {data.player.name}
-        <span>Level {data.player.level} {data.player.race} {data.player.class} </span>
+        <span>Level {data.player.level}</span>
         <span>{data.player.guildRank} of {`<${data.player.guild}>`}</span>
+         <span class="images">
+         <Image src={`assets/character/${data.player.raceId}_${data.player.genderId}.jpg`}/>
+         <Image src={`assets/class/${data.player.classId}.jpg`}/>
+         </span>
       </h1>
       <span />
       <span>Last seen by {data.player.uploader} at:</span>
