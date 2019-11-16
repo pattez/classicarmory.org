@@ -1,5 +1,6 @@
 <script>
 	import { createEventDispatcher, onMount } from 'svelte';
+  import Image from '@/components/Image.svelte';
 
   export let items = null;
   export let columns = null;
@@ -12,13 +13,19 @@
 <table>
   <tr>
     {#each columns as column}
-      <th>{column.name}</th>
+        <th>{column.name}</th>
     {/each}
   </tr>
   {#each items as item}
     <tr class="row">
       {#each columns as column}
+        {#if column.img}
+        <td class="cell" on:click={() => dispatch('click', item)}>
+          <Image src={item[column.key]}/>
+        </td>
+        {:else}
         <td class="cell" on:click={() => dispatch('click', item)}>{item[column.key]}</td>
+        {/if}
       {/each}
     </tr>
   {/each}
