@@ -153,12 +153,14 @@
   .button
     display: flex
     justify-content: center
+    width: 200px
+    margin: 0 auto
 
   .img
     justify-content: center
     display: flex
     margin-bottom: 10px
-    margin-top: 10px
+    margin-top: 15px
 
   .players
     height: 100%
