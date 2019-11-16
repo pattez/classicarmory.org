@@ -91,7 +91,6 @@
 
 </script>
 
-<Image name={"assets/character/race_dwarf_female.jpg"}/>
 
 <div class="content">
   {#if !loading}
