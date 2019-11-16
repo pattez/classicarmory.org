@@ -1,12 +1,14 @@
 <script>
   import Button from '@/components/Button.svelte';
   import Search from '@/components/Search.svelte';
+  import Image from '@/components/Image.svelte';
   import Table from '@/components/Table.svelte';
   import { onMount } from 'svelte';
   import {post} from '@/lib/axios';
   import {formatDate, ADDON_URL} from '@/globals'
   import Loading from '@/components/Loading.svelte';
-	import {push} from 'svelte-spa-router';
+  import {push} from 'svelte-spa-router';
+
   let input = '';
   let players = [];
   let lastInput = '';
@@ -15,14 +17,13 @@
   let showLoadMore = false;
   let loading = false;
   let columns = [
+    {name: '', key: 'characterSrc', img: true},
+    {name: '', key: 'classSrc', img: true},
     {name: 'Name', key: 'name'},
     {name: 'Server', key: 'server'},
     {name: 'Guild', key: 'guild'},
     {name: 'Guild rank', key: 'guildRank'},
     {name: 'Level', key: 'level'},
-    {name: 'Race', key: 'race'},
-    {name: 'Gender', key: 'gender'},
-    {name: 'Class', key: 'class'},
     {name: 'Last seen', key: 'lastSeen'},
   ];
 
@@ -51,7 +52,9 @@
       }
       players = players.map((i) => ({
           ...i,
-          lastSeen: formatDate(i.lastSeen)
+          lastSeen: formatDate(i.lastSeen),
+          characterSrc: `assets/character/${i.raceId}_${i.genderId}.jpg`,
+          classSrc: `assets/class/${i.classId}.jpg`
         }));
       loading = false;
     } else {
@@ -88,6 +91,7 @@
 
 </script>
 
+<Image name={"assets/character/race_dwarf_female.jpg"}/>
 
 <div class="content">
   {#if !loading}
