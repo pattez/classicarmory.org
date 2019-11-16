@@ -43,7 +43,9 @@
   <div class="password">
   <Search placeholder={placeholderPassword} bind:value={password}/>
   </div>
-  <Button {text} on:click={upload}/>
+  <div class="button">
+    <Button {text} on:click={upload}/>
+  </div>
   {status}
 </div>
 
@@ -62,4 +64,8 @@
 
   a
     color: $primary-4
+
+  .button
+    width: 200px
+    margin-top: 10px
 </style>
