@@ -7,6 +7,12 @@
   export let name = "Button"
   export let items;
   export let prop = 'name';
+
+  const click = (item) => {
+    name = item[prop]
+    dispatch('click', item)
+  }
+
 </script>
 
 <div class="dropdown">
@@ -15,7 +21,7 @@
   </div>
   <div class="dropdown-content">
     {#each items as item}
-      <div class="item" on:click={() => dispatch('click', item)}>
+      <div class="item" on:click={() => click(item)}>
         {item[prop]}
       </div>
     {/each}
@@ -47,11 +53,10 @@
     display: inline-block
     padding: 2px
     transform: translate(2px, -2px) rotate(-45deg)
-    margin-left: 10px
-    margin-top: 5px
+    margin-right: 5px
+    margin-top: 6px
+    margin-left: 5px
 
-  .toggled i
-    transform: translate(3px, -3px) rotate(45deg)
 
   .item
     font-weight: 500
