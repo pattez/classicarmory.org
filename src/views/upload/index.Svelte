@@ -3,18 +3,21 @@
   import Search from '@/components/Search.svelte';
   import {axiosPost} from '@/lib/axios';
   import {DISCORD_URL, ADDON_URL} from '@/globals'
+  import { onMount } from 'svelte';
   const text = "upload"
   let input = "";
   let password = ""
   let status = "";
   const placeholderPassword = "Password"
   const placeholder = "Paste copied text from addon here"
+
   const upload = async () => {
+    const p = localStorage.getItem("password")
     const lua = input.split("z27e8");
-    if (password !== '' && input !== "" && Array.isArray(lua)) {
+    if (p !== '' && input !== "" && Array.isArray(lua)) {
       try {
         const {data} = await axiosPost({url: '/upload', body: {
-          authorization: password,
+          authorization: p,
           lua
         }})
       if (data === "Done") {
@@ -27,6 +30,16 @@
     }
   };
 
+  $: {
+    if(password !== "") {
+      localStorage.setItem("password", password)
+    }
+  }
+
+  onMount(() => {
+    const p = localStorage.getItem("password")
+    password = p;
+  })
 </script>
 
 
