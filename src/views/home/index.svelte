@@ -5,7 +5,7 @@
   import Table from '@/components/Table.svelte';
   import { onMount } from 'svelte';
   import {post} from '@/lib/axios';
-  import {formatDate, ADDON_URL} from '@/globals'
+  import {formatDate, ADDON_URL, FRONTEND_URL} from '@/globals'
   import Loading from '@/components/Loading.svelte';
   import {push} from 'svelte-spa-router';
 
@@ -98,7 +98,7 @@
   <div class="form">
   <div class="info">
   <span>WoW Classic Armory uses a lightweight addon <a href={ADDON_URL}>{ADDON_URL}</a> to display your character data on <a href="https://classicarmory.org">https://classicarmory.org.</a></span>
-  <span>We are currently in a closed beta phase of development<span>
+  <span>We are currently in a beta phase of development. If you wish to read more on how to upload go to <a href={`${FRONTEND_URL}/#/upload`}>{`${FRONTEND_URL}/#/upload`}</a> <span>
   </div>
   <div class="img">
   <img src="assets/images/armory.png" alt="background image"/>
