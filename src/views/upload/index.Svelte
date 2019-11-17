@@ -13,7 +13,7 @@
 
   const upload = async () => {
     const lua = input.split("z27e8");
-    if (p !== '' && input !== "" && Array.isArray(lua)) {
+    if (input !== "" && Array.isArray(lua)) {
       try {
         const {data} = await axiosPost({url: '/upload', body: {
           lua
