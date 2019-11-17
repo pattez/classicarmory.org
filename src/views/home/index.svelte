@@ -115,8 +115,12 @@
   <div class="players">
   <div class="top">
     <h1>Players</h1>
-    <Search placeholder="pattez gehennas" bind:value={input} error={searchError}/>
+    <div class="search">
+      <Search placeholder="pattez gehennas" bind:value={input} error={searchError}/>
+    </div>
+    <div class="button after">
     <Button text="search" on:click={clickSearch}/>
+    </div>
   </div>
   <div class="table">
     <Table items={players} {columns} on:click={playerClick} showLoadMore={showLoadMore} on:load-more={fetchMore}/>
@@ -156,6 +160,10 @@
     width: 200px
     margin: 0 auto
 
+    &.after
+      margin: 0
+      margin-top: 15px
+
   .img
     justify-content: center
     display: flex
@@ -172,5 +180,8 @@
   .info
     width: 800px
     text-align: center
+
+  .top
+    margin-bottom: 30px
 
 </style>
