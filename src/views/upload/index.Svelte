@@ -2,7 +2,7 @@
   import Button from '@/components/Button.svelte';
   import Search from '@/components/Search.svelte';
   import {axiosPost} from '@/lib/axios';
-  import {DISCORD_URL, ADDON_URL} from '@/globals'
+  import {ADDON_URL} from '@/globals'
   import { onMount } from 'svelte';
   const text = "upload"
   let input = "";
@@ -12,12 +12,10 @@
   const placeholder = "Paste copied text from addon here"
 
   const upload = async () => {
-    const p = localStorage.getItem("password")
     const lua = input.split("z27e8");
     if (p !== '' && input !== "" && Array.isArray(lua)) {
       try {
         const {data} = await axiosPost({url: '/upload', body: {
-          authorization: p,
           lua
         }})
       if (data === "Done") {
@@ -30,16 +28,7 @@
     }
   };
 
-  $: {
-    if(password !== "") {
-      localStorage.setItem("password", password)
-    }
-  }
 
-  onMount(() => {
-    const p = localStorage.getItem("password")
-    password = p;
-  })
 </script>
 
 
@@ -47,14 +36,11 @@
 <h1>Upload</h1>
   <div class="info">
     <span>
-      If you wish to upload, download the addon <a href={ADDON_URL}>{ADDON_URL}</a> and join the discord: <a href={DISCORD_URL}>{DISCORD_URL}</a> and ask pattez for a password.
+      If you wish to upload, download the addon <a href={ADDON_URL}>{ADDON_URL}</a>
     </span>
   </div>
   <div class="data">
   <Search {placeholder} bind:value={input}/>
-  </div>
-  <div class="password">
-  <Search placeholder={placeholderPassword} bind:value={password}/>
   </div>
   <div class="button">
     <Button {text} on:click={upload}/>
