@@ -21,7 +21,9 @@
       {#each columns as column}
         {#if column.img}
         <td class="cell" on:click={() => dispatch('click', item)}>
-          <Image src={item[column.key]}/>
+          {#if item[column.key]}
+            <Image src={item[column.key]}/>
+          {/if}
         </td>
         {:else}
         <td class="cell" on:click={() => dispatch('click', item)}>{item[column.key]}</td>
