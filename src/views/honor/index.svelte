@@ -62,8 +62,7 @@
   const get = async (offset, join, oldData) => {
     getLocalStorage()
     const container = document.querySelector('.content.honor');
-    if (container) {
-      console.log(container.clientHeight)
+    if (container && offset > 0) {
       scrollTo({
         y: container.clientHeight - 50
       })
