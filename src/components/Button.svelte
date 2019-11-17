@@ -10,7 +10,6 @@
 
 <style lang="stylus">
   .button
-    min-width: 150px
     background-color: transparent
     border-color: #66fcf1
     text-transform: uppercase
