@@ -5,6 +5,7 @@
   import {axiosPost} from '@/lib/axios';
   import {formatDate, SERVERS, FRONTEND_URL} from '@/globals'
   import { onMount } from 'svelte';
+  import {scrollTo} from "svelte-scrollto";
 
   const columns = [
     {name: "", key: "characterSrc", img:true},
@@ -58,9 +59,16 @@
   let dataLength = 0;
   let honorData = [];
 
-  const get = async (offset, join) => {
+  const get = async (offset, join, oldData) => {
     getLocalStorage()
-    const {data} = await axiosPost({
+    const container = document.querySelector('.content.honor');
+    if (container) {
+      console.log(container.clientHeight)
+      scrollTo({
+        y: container.clientHeight - 50
+      })
+    }
+    let {data} = await axiosPost({
       url: '/honor',
       body: {
       serverId: searchItems.server.id,
@@ -69,9 +77,15 @@
       orderBy: searchItems.orderBy.key
       }
     });
+    showLoadMore = data.length >= 50;
+    dataLength = data.length;
+      if (join) {
+        data = oldData.concat(data)
+        honorData = data
+      } else {
+        honorData = data
+      }
     if (data) {
-      showLoadMore = data.length >= 50;
-      dataLength = data.length;
 
       return data.map(i => {
         return {
@@ -92,7 +106,7 @@
   const fetchMore = async () => {
     if(dataLength > 0) {
       initialOffset = initialOffset + 50;
-      await get(initialOffset, true)
+      promise = get(initialOffset, true, honorData)
     }
   };
 
@@ -142,7 +156,7 @@
 {#await promise}
 <Loading/>
 {:then data}
-<div class="content">
+<div class="content honor">
 <h1>Honor</h1>
 <div class="dropdowns">
   <div class="dropdown factions">
