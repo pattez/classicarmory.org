@@ -131,6 +131,9 @@
     <div class="info">
       <span>Server: {SERVERS[data.player.serverId].name}</span>
     </div>
+    <div class="info">
+      <span>Last seen by {data.player.uploader}: {formatDate(data.player.lastSeen)}</span>
+    </div>
   </div>
   <div class="general">
       <div class="gear">
