@@ -83,7 +83,6 @@
           Object.assign(slot, {...values})
       }
     }
-    console.log(data)
     if (data) {
       return data;
     } else {
