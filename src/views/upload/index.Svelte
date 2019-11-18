@@ -12,21 +12,23 @@
   const placeholder = "Paste copied text from addon here"
 
   const upload = async () => {
-    const lua = input.split("z27e8");
-    if (input !== "" && Array.isArray(lua)) {
-      try {
-        const {data} = await axiosPost({url: '/upload', body: {
-          lua
-        }})
-      if (data === "Done") {
-        status = "Successful upload"
-        input = ""
-      }
-      } catch (e) {
-        status = "Too many requests from this IP. Try again in 15 minutes."
-      }
+    try {
+      const {data} = await axiosPost({url: '/upload', body: {
+        lua: input
+      }})
+      status = data
+      input = ""
+    }
+     catch (e) {
+      status = "Too many requests from this IP. Try again in 15 minutes."
     }
   };
+
+  $: {
+    if (input !== "") {
+      input = btoa(input)
+    }
+  }
 
 
 </script>
