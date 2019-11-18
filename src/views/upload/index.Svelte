@@ -40,7 +40,7 @@
     </span>
   </div>
   <div class="data">
-  <Search {placeholder} bind:value={input}/>
+    <textarea {placeholder} bind:value={input} class="textarea"/>
   </div>
   <div class="button">
     <Button {text} on:click={upload}/>
@@ -67,4 +67,11 @@
   .button
     width: 200px
     margin-top: 10px
+
+  .textarea
+    background-color: $primary-1
+    border-color: $primary-4
+    color: white
+    width: 100%
+    height: 300px
 </style>
