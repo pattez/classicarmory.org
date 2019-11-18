@@ -183,7 +183,7 @@
 <style lang="stylus">
 
   .content
-    width: calc(100% - 300px)
+    width: calc(100% - 450px)
     margin: 0 auto
 
   .alliance

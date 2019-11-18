@@ -76,7 +76,7 @@
 <style lang="stylus">
   @require 'styles/colors'
   .content
-    width: calc(100% - 500px)
+    width: calc(100% - 450px)
     margin: 0 auto
 
   .data, .password

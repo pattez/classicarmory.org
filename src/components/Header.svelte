@@ -1,7 +1,7 @@
 
 <script>
 	import {push} from 'svelte-spa-router';
-  import {FRONTEND_URL, PATREON_URL} from '@/globals';
+  import {FRONTEND_URL} from '@/globals';
   const githubLink = () => {
     window.open('https://github.com/pattez');
   }
@@ -13,8 +13,8 @@
     window.location = FRONTEND_URL
   };
 
-  const patreon = () => {
-    window.open(PATREON_URL);
+  const donate = () => {
+    push('/donate')
   }
 
   const honor = () => {
@@ -42,6 +42,9 @@
   <div class="upload" on:click={upload}>
     Upload
   </div>
+  <div class="upload" on:click={donate}>
+    Donate
+  </div>
   </div>
   <div class="github">
     <span>
@@ -49,12 +52,7 @@
     </span>
     <img src="assets/images/github.png" on:click={githubLink}/>
     <img src="assets/images/discord.png" class="discord" on:click={discordLink}/>
-        <div class="donate">
-      <span on:click={patreon}>
-    Donate
-  </span>
 
-    </div>
   </div>
   </div>
 </div>

@@ -172,6 +172,7 @@
 
   .players
     height: 100%
+    width: calc(100% - 550px)
 
   span
     line-height: 25px
