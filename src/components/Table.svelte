@@ -13,14 +13,14 @@
 <table>
   <tr>
     {#each columns as column}
-        <th>{column.name}</th>
+        <th class="{column.img ? 'img': ''}">{column.name}</th>
     {/each}
   </tr>
   {#each items as item}
     <tr class="row">
       {#each columns as column}
         {#if column.img}
-        <td class="cell" on:click={() => dispatch('click', item)}>
+        <td class="cell img" on:click={() => dispatch('click', item)}>
           {#if item[column.key]}
             <Image src={item[column.key]}/>
           {/if}
@@ -50,6 +50,9 @@
   table
     border-collapse: collapse
 
+  .cell.img
+    padding: 5px
+
   .empty
     position: absolute
     margin: auto
@@ -72,6 +75,9 @@
   th, td
     padding: 10px
     text-align: left
+
+    &.img
+      padding: 5px
 
   table
     width: 100%
