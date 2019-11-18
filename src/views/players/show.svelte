@@ -54,7 +54,11 @@
     5: '#ff8000',
   };
 
+  const checkOtherItems = (items) => {
+    return Object.keys(items).some((key) => items[key].length > 1)
+  }
 
+  let otherItems = true;
 
     const getPlayerData = async () => {
     const { data } = await get({ url: $location });
@@ -83,6 +87,7 @@
           Object.assign(slot, {...values})
       }
     }
+    otherItems = checkOtherItems(data.gear);
     if (data) {
       return data;
     } else {
@@ -172,6 +177,7 @@
   <div class="other-gear">
   <h1>Other items</h1>
     <div class="items">
+      {#if otherItems}
       {#each Object.keys(data.gear) as i}
         {#each data.gear[i] as slot}
           {#if !slot.current}
@@ -183,6 +189,9 @@
           {/if}
         {/each}
       {/each}
+      {:else}
+        No other items scanned
+      {/if}
     </div>
   </div>
   </div>
