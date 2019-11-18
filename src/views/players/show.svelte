@@ -1,5 +1,5 @@
 <script>
-  import {INVENTORY_ITEMS, formatDate} from '@/globals'
+  import {INVENTORY_ITEMS, formatDate, SERVERS} from '@/globals'
   import { location } from 'svelte-spa-router';
   import Image from '@/components/Image.svelte';
   import { get } from '@/lib/axios';
@@ -107,20 +107,25 @@
   {#await promise}
     <Loading />
   {:then data}
-  <div class="info no-padding">
-  <div>
-    <Image src={`assets/character/${data.player.raceId}_${data.player.genderId}.jpg`}/>
-  </div>
-  <div>
-    <Image src={`assets/class/${data.player.classId}.jpg`}/>
-  </div>
-    <span>{data.player.name}</span>
-    <span>{data.player.level}</span>
-  </div>
-  <div class="info">
-    {#if data.player.guild}
-    <span>{data.player.guildRank} of {`<${data.player.guild}>`}</span>
-    {/if}
+  <div class="block">
+    <div class="info no-padding">
+    <div>
+      <Image src={`assets/character/${data.player.raceId}_${data.player.genderId}.jpg`}/>
+    </div>
+    <div>
+      <Image src={`assets/class/${data.player.classId}.jpg`}/>
+    </div>
+      <span>{data.player.name}</span>
+      <span>{data.player.level}</span>
+    </div>
+    <div class="info guild">
+      {#if data.player.guild}
+      <span>{data.player.guildRank} of {`<${data.player.guild}>`}</span>
+      {/if}
+    </div>
+    <div class="info">
+      <span>Server: {SERVERS[data.player.serverId].name}</span>
+    </div>
   </div>
   <div class="general">
       <div class="gear">
@@ -192,7 +197,6 @@
   @require 'styles/colors'
 
   .info
-    padding-bottom: 15px
     font-weight: 500
     font-size: 20px
     display: flex
@@ -203,9 +207,15 @@
     &.no-padding
       padding: 0
 
+    &.guild
+      padding: 0
+
   .content
     width: calc(100% - 450px)
     margin: 0 auto
+
+  .block
+    padding-bottom: 15px
 
   .general
     height: 430px
