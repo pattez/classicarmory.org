@@ -1,5 +1,5 @@
 <script>
-  import {INVENTORY_ITEMS, formatDate, SERVERS} from '@/globals'
+  import {INVENTORY_ITEMS, formatDate, SERVERS, RACES} from '@/globals'
   import { location } from 'svelte-spa-router';
   import Image from '@/components/Image.svelte';
   import { get } from '@/lib/axios';
@@ -53,6 +53,11 @@
     4: '#a335ee',
     5: '#ff8000',
   };
+
+  const resolveFaction = (raceId) => {
+    return RACES[raceId].faction === "Alliance" ? 1 : 2;
+  };
+
 
   const checkOtherItems = (items) => {
     return Object.keys(items).some((key) => items[key].length > 1)
@@ -119,6 +124,9 @@
     </div>
     <div>
       <Image src={`assets/class/${data.player.classId}.jpg`}/>
+    </div>
+      <div>
+      <Image src={`assets/rank/${resolveFaction(data.player.raceId)}_${data.player.rankNumber}.jpg`}/>
     </div>
       <span>{data.player.name}</span>
       <span>{data.player.level}</span>

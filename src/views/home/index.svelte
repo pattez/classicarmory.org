@@ -5,7 +5,7 @@
   import Table from '@/components/Table.svelte';
   import { onMount } from 'svelte';
   import {post} from '@/lib/axios';
-  import {formatDate, ADDON_URL, FRONTEND_URL} from '@/globals'
+  import {formatDate, ADDON_URL, FRONTEND_URL, RACES} from '@/globals'
   import Loading from '@/components/Loading.svelte';
   import {push} from 'svelte-spa-router';
 
@@ -19,6 +19,7 @@
   let columns = [
     {name: '', key: 'characterSrc', img: true},
     {name: '', key: 'classSrc', img: true},
+    {name: '', key: 'rankSrc', img: true},
     {name: 'Name', key: 'name'},
     {name: 'Server', key: 'server'},
     {name: 'Guild', key: 'guild'},
@@ -26,6 +27,10 @@
     {name: 'Level', key: 'level'},
     {name: 'Last seen', key: 'lastSeen'},
   ];
+
+  const resolveFaction = (raceId) => {
+    return RACES[raceId].faction === "Alliance" ? 1 : 2;
+  };
 
   async function getPlayers(o) {
     if (input) {
@@ -54,7 +59,8 @@
           ...i,
           lastSeen: formatDate(i.lastSeen),
           characterSrc: `assets/character/${i.raceId}_${i.genderId}.jpg`,
-          classSrc: `assets/class/${i.classId}.jpg`
+          classSrc: `assets/class/${i.classId}.jpg`,
+          rankSrc: i.rankNumber >= 5 && i.rankNumber <= 18 ? `assets/rank/${resolveFaction(i.raceId)}_${i.rankNumber}.jpg` : null
         }));
       loading = false;
     } else {

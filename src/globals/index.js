@@ -115,4 +115,16 @@ const SERVERS = {
     64: { name: 'Yojamba', type: 'PvP' },
   };
 
-export { BACKEND_URL, genders, zerolize, formatDate, INVENTORY_ITEMS, FRONTEND_URL, PATREON_URL, DISCORD_URL, ADDON_URL, SERVERS }
+  const RACES = {
+    1: { name: 'Human', faction: 'Alliance' },
+    2: { name: 'Orc', faction: 'Horde' },
+    3: { name: 'Dwarf', faction: 'Alliance' },
+    4: { name: 'Night Elf', faction: 'Alliance' },
+    5: { name: 'Undead', faction: 'Horde' },
+    6: { name: 'Tauren', faction: 'Horde' },
+    7: { name: 'Gnome', faction: 'Alliance' },
+    8: { name: 'Troll', faction: 'Horde' },
+  };
+
+
+export { BACKEND_URL, genders, zerolize, formatDate, INVENTORY_ITEMS, FRONTEND_URL, PATREON_URL, DISCORD_URL, ADDON_URL, SERVERS, RACES }
