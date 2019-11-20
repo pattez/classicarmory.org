@@ -30,7 +30,7 @@
   <div class="title">
   <div class="text" on:click={home}>
     <span>
-    WoW Classic Armory
+    Classic WoW Armory
     <span class="beta">
       Beta
     </span>

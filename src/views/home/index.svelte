@@ -103,7 +103,7 @@
   {#if players.length === 0}
   <div class="form">
   <div class="info">
-  <span>WoW Classic Armory uses a lightweight addon <a href={ADDON_URL}>{ADDON_URL}</a> to display your character data on <a href="https://classicarmory.org">https://classicarmory.org.</a></span>
+  <span>Classic WoW Armory uses a lightweight addon <a href={ADDON_URL}>{ADDON_URL}</a> to display your character data on <a href="https://classicarmory.org">https://classicarmory.org.</a></span>
   <span>We are currently in a beta phase of development. If you wish to read more on how to upload go to <a href={`${FRONTEND_URL}/#/upload`}>{`${FRONTEND_URL}/#/upload`}</a> <span>
   </div>
   <div class="img">
