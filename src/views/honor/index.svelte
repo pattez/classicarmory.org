@@ -94,7 +94,7 @@
           lifetimeHK: i.lifetimeHK || 0,
           characterSrc: `assets/character/${i.raceId}_${i.genderId}.jpg`,
           classSrc: `assets/class/${i.classId}.jpg`,
-          rankSrc: i.rankNumber > 0 && i.rankNumber < 14 ? `assets/rank/${i.faction}_${i.rankNumber}.jpg` : null
+          rankSrc: i.rankNumber > 0 && i.rankNumber <= 18 ? `assets/rank/${i.faction}_${i.rankNumber}.jpg` : null
         }
       })
     } else {
