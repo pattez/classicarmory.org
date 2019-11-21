@@ -1,5 +1,5 @@
 <script>
-  import {INVENTORY_ITEMS, formatDate, SERVERS, RACES} from '@/globals'
+  import {INVENTORY_ITEMS, formatDate, SERVERS, RACES, RANKS} from '@/globals'
   import { location } from 'svelte-spa-router';
   import Image from '@/components/Image.svelte';
   import { get } from '@/lib/axios';
@@ -8,7 +8,7 @@
   import GearContainer from '@/components/GearContainer.svelte';
   const WOWHEAD_ICON_URL = 'https://wow.zamimg.com/images/wow/icons/large/'
   const WOWHEAD_ITEM_URL = 'https://classic.wowhead.com/tooltip/item/';
-  const WOWHEAD_ICON_URL_MEDIUM = 'https://wow.zamimg.com/images/wow/icons/medium/';
+  const WOWHEAD_ICON_URL_MEDIUM = 'https://wow.zamimg.com/images/wow/icons/large/';
   const getSlotId = (item) => {
     return item.split('slot_')[1]
   }
@@ -118,16 +118,18 @@
     <Loading />
   {:then data}
   <div class="block">
-    <div class="info no-padding">
+    <div class="info no-padding player">
     <div>
       <Image src={`assets/character/${data.player.raceId}_${data.player.genderId}.jpg`}/>
     </div>
     <div>
       <Image src={`assets/class/${data.player.classId}.jpg`}/>
     </div>
+      {#if data.player.rankNumber >= 5 && data.player.rankNumber <= 18}
       <div>
       <Image src={`assets/rank/${resolveFaction(data.player.raceId)}_${data.player.rankNumber}.jpg`}/>
     </div>
+      {/if}
       <span>{data.player.name}</span>
       <span>{data.player.level}</span>
     </div>
@@ -186,7 +188,9 @@
     </div>
   </div>
   <div class="other-gear">
-  <h1>Other items</h1>
+    <div class="title">
+    Other items
+    </div>
     <div class="items">
       {#if otherItems}
       {#each Object.keys(data.gear) as i}
@@ -205,6 +209,39 @@
       {/if}
     </div>
   </div>
+  <div class="honor">
+      <div class="title">Honor</div>
+      <div class="today">
+      <div class="title margin">Today</div>
+        <span>Honorable Kills <span>{data.player.todayHK}</span></span>
+      </div>
+      <div class="yesterday">
+      <div class="title margin">Yesterday</div>
+        <span>Honorable Kills <span>{data.player.yesterdayHK}</span></span>
+        <span>Honor <span>{data.player.yesterdayHonor}</span></span>
+      </div>
+      <div class="thisweek">
+      <div class="title margin">This week</div>
+        <span>Honorable Kills <span>{data.player.thisweekHK}</span></span>
+        <span>Honor <span>{data.player.thisweekHonor}</span></span>
+      </div>
+      <div class="lastweek">
+      <div class="title margin">Last week</div>
+        <span>Honorable Kills <span>{data.player.lastweekHK}</span></span>
+        <span>Honor <span>{data.player.lastweekHonor}</span></span>
+        <span>Standing <span>{data.player.lastweekStanding}</span></span>
+      </div>
+      <div class="lifetime">
+      <div class="title margin">Lifetime</div>
+        <span>Honorable Kills <span>{data.player.lifetimeHK}</span></span>
+        <span>Dishonorable Kills <span>{data.player.lifetimeDK}</span></span>
+        <span>Highest Rank
+          <span>
+            {#if data.player.lifetimeRank >= 5 && data.player.lifetimeRank <= 18}{RANKS[`${resolveFaction(data.player.raceId)}${data.player.lifetimeRank}`]} {:else} No rank {/if}
+          </span>
+        </span>
+      </div>
+    </div>
   </div>
 
   {:catch}
@@ -216,13 +253,22 @@
 <style lang="stylus">
   @require 'styles/colors'
 
+
+
+  .honor span
+    display: flex
+    justify-content: space-between
+
   .info
     font-weight: 500
     font-size: 18px
     display: flex
 
-    div, span
+    div:not(:first-child), span:not(:first-child)
       margin: 0px 5px 0px 5px
+
+    div:first-child
+      margin-right: 5px
 
     &.no-padding
       padding: 0
@@ -239,23 +285,25 @@
 
   .general
     height: 430px
+    display: flex
 
   .other-gear
-    width: 355px
-    margin-top: 15px
-    display: grid
+    width: 210px
+    margin-left: 45px
 
   .items
     width: 100%
     height: 100%
     display: grid
-    grid-template-columns: 25px 25px auto
+    grid-template-columns: 30px 30px 30px 30px
+    grid-auto-rows: 30px
     grid-gap: 10px
 
   .gear
     display: grid
     grid-template-columns: 90px 220px 45px
     width: 355px
+    height: 420px
 
   .left
     grid-column: 1
@@ -286,8 +334,22 @@
       margin-right: 5px
 
     &.other
-      width: 25px
-      height: 25px
+      width: 30px
+      height: 30px
       margin: 0
+
+  .title
+    font-weight: 500
+    margin-bottom: 15px
+    font-size: 18px
+
+    &.margin
+      margin: 5px 0px 5px 0px
+      font-size: 15px
+
+
+  .honor
+    margin-left: 30px
+    width: 280px
 
 </style>
