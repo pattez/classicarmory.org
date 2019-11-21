@@ -26,10 +26,7 @@
 <style lang="stylus">
 	.content
 		width: calc(100% - 60px)
-		height: calc(100% - 130px)
+		height: calc(100% - 102px)
 		margin: 0 auto
-
-		&.disclaimer
-			 margin-top: 70px
 
 </style>

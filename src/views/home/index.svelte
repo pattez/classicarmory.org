@@ -191,4 +191,8 @@
   .top
     margin-bottom: 30px
 
+  .donations
+    position: absolute
+    bottom: 70px
+
 </style>

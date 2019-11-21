@@ -37,6 +37,5 @@
 
 	.disclaimer
 		position: absolute
-		top: 58px
 		z-index: 200
 </style>
