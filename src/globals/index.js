@@ -48,6 +48,37 @@ const INVENTORY_ITEMS = {
     slot_19: 'Tabard',
 }
 
+const RANKS = {
+    15: 'Private',
+    16: 'Corporal',
+    17: 'Sergeant',
+    18: 'Master Sergeant',
+    19: 'Sergeant Major',
+    110: 'Knight',
+    111: 'Knight-Lieutenant',
+    112: 'Knight-Captain',
+    113: 'Knight-Champion',
+    114: 'Lieutenant Commander',
+    115: 'Commander',
+    116: 'Marshal',
+    117: 'Field Marshal',
+    118: 'Grand Marshal',
+    25: 'Scout',
+    26: 'Grunt',
+    27: 'Sergeant',
+    28: 'Senior Sergeant',
+    29: 'First Sergeant',
+    210: 'Stone Guard',
+    211: 'Blood Guard',
+    212: 'Legionnaire',
+    213: 'Centurion',
+    214: 'Champion',
+    215: 'Lieutenant General',
+    216: 'General',
+    217: 'Warlord',
+    218: 'High Warlord'
+}
+
 const SERVERS = {
     1: { name: 'Ashbringer', type: 'PVP' },
     2: { name: 'Bloodfang', type: 'PVP' },
@@ -127,4 +158,4 @@ const SERVERS = {
   };
 
 
-export { BACKEND_URL, genders, zerolize, formatDate, INVENTORY_ITEMS, FRONTEND_URL, PATREON_URL, DISCORD_URL, ADDON_URL, SERVERS, RACES }
+export { BACKEND_URL, genders, zerolize, formatDate, INVENTORY_ITEMS, FRONTEND_URL, PATREON_URL, DISCORD_URL, ADDON_URL, SERVERS, RACES, RANKS }
