@@ -35,7 +35,8 @@
     &:hover
       transform: scale(1.1)
 
-	.disclaimer
-		position: absolute
-		z-index: 200
+  .disclaimer
+    position: fixed
+    bottom: 0
+    z-index: 200
 </style>
