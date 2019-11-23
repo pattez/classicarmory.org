@@ -3,12 +3,14 @@ import players from './players'
 import honor from './honor'
 import upload from './upload'
 import donate from './donate'
+import stats from './stats'
 const routes = {
     ...home,
     ...players,
     ...honor,
     ...upload,
-    ...donate
+    ...donate,
+    ...stats,
 }
 
 export default routes

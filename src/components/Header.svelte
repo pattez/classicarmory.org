@@ -23,13 +23,16 @@
   const upload = () => {
     push('/upload')
   }
+  const stats = () => {
+    push('/stats')
+  }
 </script>
 
 <div class="header">
   <div class="content">
   <div class="title">
   <div class="text" on:click={home}>
-    <span>
+    <span class="armory">
     Classic WoW Armory
     <span class="beta">
       Beta
@@ -38,6 +41,9 @@
   </div>
   <div class="honor" on:click={honor}>
     Honor
+  </div>
+  <div class="upload" on:click={stats}>
+    Stats
   </div>
   <div class="upload" on:click={upload}>
     Upload
@@ -137,4 +143,7 @@
 
   .donate span:hover
     opacity: 0.7
+
+  .armory
+    font-weight: bold
 </style>
