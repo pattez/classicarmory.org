@@ -103,17 +103,20 @@
   {#if players.length === 0}
   <div class="form">
   <div class="info">
-  <span>Classic WoW Armory uses a lightweight addon <a href={ADDON_URL}>{ADDON_URL}</a> to display your character data on <a href="https://classicarmory.org">https://classicarmory.org.</a></span>
-  <span>We are currently in a beta phase of development. If you wish to read more on how to upload go to <a href={`${FRONTEND_URL}/#/upload`}>{`${FRONTEND_URL}/#/upload`}</a> <span>
-  </div>
   <div class="img">
   <img src="assets/images/armory.png" alt="background image"/>
+  </div>
+  <div class="title">Classic WoW Armory</div>
   </div>
   <div class="search">
     <Search placeholder="Player name or server" bind:value={input} error={searchError}/>
   </div>
   <div class="button">
     <Button text="search" on:click={clickSearch}/>
+  </div>
+  <div class="info about">
+  <span>Classic WoW Armory uses a lightweight addon <a href={ADDON_URL}>{ADDON_URL}</a> to display your character data on <a href="https://classicarmory.org">https://classicarmory.org.</a></span>
+  <span>We are currently in a beta phase of development. If you wish to read more on how to upload go to <a href={`${FRONTEND_URL}/#/upload`}>{`${FRONTEND_URL}/#/upload`}</a> <span>
   </div>
   </div>
   {/if}
@@ -155,7 +158,6 @@
     justify-content: center
     width: 100%
     height: 100%
-    align-items: center
 
   .search
     margin-bottom: 10px
@@ -173,7 +175,6 @@
   .img
     justify-content: center
     display: flex
-    margin-bottom: 10px
     margin-top: 15px
 
   .players
@@ -187,6 +188,10 @@
   .info
     width: 800px
     text-align: center
+    margin-bottom: 40px
+
+    &.about
+      margin-top: 40px
 
   .top
     margin-bottom: 30px
@@ -194,5 +199,12 @@
   .donations
     position: absolute
     bottom: 70px
+
+  .form
+    margin-top: 100px
+
+  .title
+    font-size: 4em
+    font-weight: 500
 
 </style>
