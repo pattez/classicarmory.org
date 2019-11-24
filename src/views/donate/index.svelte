@@ -14,6 +14,9 @@
     </div>
     <span><a href={PATREON_URL}>Patreon</a></span>
     <span>Other ways of donating will be added eventually, if you feel like donating through paypal or by sending bitcoin or another other cryptocurrency, contact me on discord pattez#4267</span>
+      <div class="donations">
+    Donations: 1. Myaka 0.0010 BTC
+    </div>
   </div>
 </div>
 
