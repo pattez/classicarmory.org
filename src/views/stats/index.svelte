@@ -34,7 +34,7 @@
   <Loading/>
   {:then data}
   <span>
-    Total players inspeted:
+    Total players inspected:
     {data.total}
   </span>
     <h1>EU</h1>
