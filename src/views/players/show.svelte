@@ -4,7 +4,11 @@
   import Image from '@/components/Image.svelte';
   import { get } from '@/lib/axios';
   import Loading from '@/components/Loading.svelte';
+  import Search from '@/components/Search.svelte';
+  import Button from '@/components/Button.svelte';
+  import {push} from 'svelte-spa-router';
   import axios from 'axios';
+  import {querystring} from 'svelte-spa-router'
   import GearContainer from '@/components/GearContainer.svelte';
   const WOWHEAD_ICON_URL = 'https://wow.zamimg.com/images/wow/icons/large/'
   const WOWHEAD_ITEM_URL = 'https://classic.wowhead.com/tooltip/item/';
@@ -106,6 +110,12 @@
 
   let promise = getPlayerData()
 
+  const search = () => {
+    push('/', {bro: 'hej'})
+  }
+
+  let input = ""
+
 </script>
 
 
@@ -113,7 +123,13 @@
 
 
 <div class="content">
-  <h1>Player</h1>
+  <h1>Players</h1>
+  <!-- <div class="search">
+    <Search placeholder="Player name or server" autofocus={false} bind:value={input}/>
+  </div>
+  <div class="button">
+    <Button text="Search" on:click={search}/>
+  </div> -->
   {#await promise}
     <Loading />
   {:then data}
@@ -142,7 +158,9 @@
       <span>Server: {SERVERS[data.player.serverId].name}</span>
     </div>
     <div class="info">
-      <span>Last seen by {data.player.uploader}: {formatDate(data.player.lastSeen)}</span>
+      <span class="lastseen">Last seen by {data.player.uploader}: {formatDate(data.player.lastSeen)}</span>
+      <span class="otherItems">Other items</span>
+      <span class="h">Honor</span>
     </div>
   </div>
   <div class="general">
@@ -188,9 +206,9 @@
     </div>
   </div>
   <div class="other-gear">
-    <div class="title">
+    <!-- <div class="title">
     Other items
-    </div>
+    </div> -->
     <div class="items">
       {#if otherItems}
       {#each Object.keys(data.gear) as i}
@@ -210,9 +228,9 @@
     </div>
   </div>
   <div class="honor">
-      <div class="title">Honor</div>
+      <!-- <div class="title">Honor</div> -->
       <div class="today">
-      <div class="title margin">Today</div>
+      <div class="title margin first">Today</div>
         <span>Honorable Kills <span>{data.player.todayHK}</span></span>
       </div>
       <div class="yesterday">
@@ -282,6 +300,7 @@
 
   .block
     padding-bottom: 15px
+    padding-top: 30px
 
   .general
     height: 430px
@@ -346,10 +365,36 @@
     &.margin
       margin: 5px 0px 5px 0px
       font-size: 15px
+      font-weight: bold
+      border-bottom: 1px solid white
+
+      &.first
+        margin-top: 0
 
 
   .honor
     margin-left: 30px
     width: 280px
 
+  .search
+    margin-bottom: 10px
+
+  .button
+    width: 200px
+    margin-top: 15px
+
+  .lastseen
+    width: 355px
+
+  .otherItems
+    width: 210px
+    margin-left: 45px !important
+    margin-right: 0 !important
+    font-weight: bold
+
+  .h
+    width: 280px
+    margin-left: 28px !important
+    margin-right: 0 !important
+    font-weight: bold
 </style>

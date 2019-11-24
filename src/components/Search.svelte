@@ -3,9 +3,10 @@
   export let placeholder;
   export let value;
   export let error;
+  export let autofocus = true;
 </script>
 
-<input class="input{error ? ' error' : ''}" type="text" bind:value={value}  placeholder={placeholder || 'search'} autofocus/>
+<input class="input{error ? ' error' : ''}" type="text" bind:value={value}  placeholder={placeholder || 'search'} autofocus={autofocus}/>
 
 
 <style type="text/stylus">

@@ -186,7 +186,7 @@
     font-weight: 500
 
   .info
-    width: 800px
+    width: 1000px
     text-align: center
     margin-bottom: 40px
 
@@ -204,7 +204,7 @@
     margin-top: 100px
 
   .title
-    font-size: 4em
+    font-size: 3em
     font-weight: 500
 
 </style>

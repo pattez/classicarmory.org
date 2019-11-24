@@ -10,7 +10,7 @@
   }
 
   const home = () => {
-    window.location = FRONTEND_URL
+    push('/')
   };
 
   const donate = () => {
@@ -146,4 +146,5 @@
 
   .armory
     font-weight: bold
+
 </style>
