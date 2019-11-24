@@ -54,7 +54,7 @@
   </div>
   <div class="github">
     <span>
-      By pattez
+      By Pattez
     </span>
     <img src="assets/images/github.png" on:click={githubLink}/>
     <img src="assets/images/discord.png" class="discord" on:click={discordLink}/>
