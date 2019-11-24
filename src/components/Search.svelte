@@ -16,6 +16,7 @@
       text-align: center
       border-color: #66fcf1
       outline: 0
+      padding: 8px
 
       &:focus
         box-shadow: none
