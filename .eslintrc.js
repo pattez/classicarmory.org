@@ -17,7 +17,6 @@ module.exports = {
         },
     ],
     rules: {
-        'prettier/prettier': 'error',
         'svelte3/lint-template': 2,
         'comma-dangle': 0,
         'svelte3/ignore-styles': 0,

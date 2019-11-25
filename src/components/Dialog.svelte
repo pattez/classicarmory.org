@@ -20,7 +20,6 @@
 </script>
 
 <style lang="stylus">
-  /* prettier-ignore */
   @require 'styles/layout'
   @require 'styles/colors'
 

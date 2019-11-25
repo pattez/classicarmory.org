@@ -15,8 +15,6 @@
     "svelte-spa-router": "^1.2.1",
     "rollup-plugin-alias": "^2.2.0",
     "eslint": "~6.6.0",
-    "prettier": "~1.18.2",
-    "prettier-plugin-svelte": "~0.7.0",
     "eslint-plugin-svelte3": "~2.7.3",
     "@babel/core": "~7.7.2",
     "rollup-plugin-babel": "4.3.3",
