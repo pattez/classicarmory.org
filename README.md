@@ -1,7 +1,9 @@
 
 
 # https://classicarmory.org
-
+* Svelte
+* Rollup
+* Stylus
 
 
 # Running
