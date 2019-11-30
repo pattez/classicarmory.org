@@ -1,9 +1,9 @@
 
 
 # https://classicarmory.org
-* Svelte
-* Rollup
-* Stylus
+* Svelte https://svelte.dev/
+* Rollup https://rollupjs.org/guide/en/
+* Stylus http://stylus-lang.com/
 
 
 # Running
