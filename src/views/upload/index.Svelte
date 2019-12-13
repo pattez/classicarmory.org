@@ -26,7 +26,7 @@
 
   $: {
     if (input !== "") {
-      input = btoa(unescape(encodeURIComponent(input)))
+      input = btoa(encodeURIComponent(input))
     }
   }
 
