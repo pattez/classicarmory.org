@@ -136,7 +136,7 @@ const SERVERS = {
     54: { name: 'Skeram', type: 'PvP', region: 'us' },
     55: { name: 'Smolderweb', type: 'PvP', region: 'us' },
     56: { name: 'Stalagg', type: 'PvP', region: 'us' },
-    57: { name: "ul'thraze", type: 'PvP', region: 'us' },
+    57: { name: "Sul'thraze", type: 'PvP', region: 'us' },
     58: { name: 'Sulfuras', type: 'PvP', region: 'us' },
     59: { name: 'Thalnos', type: 'PvP', region: 'us' },
     60: { name: 'Thunderfury', type: 'PvP', region: 'us' },
