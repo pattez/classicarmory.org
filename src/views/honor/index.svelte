@@ -11,6 +11,7 @@
     {name: "", key: "characterSrc", img:true},
     {name: "", key: "classSrc", img: true },
     {name: "", key: "rankSrc", img: true },
+    {name: 'Lvl', key: 'level'},
     {name: 'Name', key: 'name'},
     {name: 'Guild', key: 'guild'},
     {name: 'Guild rank', key: 'guildRank'},
