@@ -159,6 +159,11 @@
     width: calc(100% - 450px)
     margin: 0 auto
 
+  .main
+    background-repeat: no-repeat
+    background-size: contain
+    background-position: center
+
   .block
     padding-bottom: 15px
     padding-top: 30px
@@ -271,6 +276,7 @@
   {#await promise}
     <Loading />
   {:then data}
+  <div class="main" style="background-image: url('assets/wallpaper/{resolveFaction(data.player.raceId)}.webp')">
     <div class="block">
       <div class="info no-padding player">
         <div>
@@ -301,8 +307,6 @@
         <span class="lastseen">
           Last seen by {data.player.uploader}: {formatDate(data.player.lastSeen)}
         </span>
-        <span class="otherItems">Other items</span>
-        <span class="h">Honor</span>
       </div>
     </div>
     <div class="general">
@@ -363,9 +367,6 @@
         </div>
       </div>
       <div class="other-gear">
-        <!-- <div class="title">
-    Other items
-    </div> -->
         <div class="items">
           {#if otherItems}
             {#each Object.keys(data.gear) as i}
@@ -388,7 +389,6 @@
         </div>
       </div>
       <div class="honor">
-        <!-- <div class="title">Honor</div> -->
         <div class="today">
           <div class="title margin first">Today</div>
           <span>
@@ -454,7 +454,7 @@
         </div>
       </div>
     </div>
-
+</div>
   {:catch}
     ERROR
   {/await}
