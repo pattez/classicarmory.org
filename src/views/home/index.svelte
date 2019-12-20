@@ -33,8 +33,8 @@
   };
 
   async function getPlayers(o) {
-    if (input) {
-      if ($querystring) {
+    if (input || $querystring) {
+      if ($querystring && input === '') {
         input = parseQuerystring();
       }
       if (lastInput !== input) {
