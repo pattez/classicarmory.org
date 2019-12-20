@@ -1,17 +1,14 @@
 <script>
-  import { createEventDispatcher } from 'svelte';
-	const dispatch = createEventDispatcher();
+  import { createEventDispatcher } from "svelte";
+  const dispatch = createEventDispatcher();
   export let placeholder;
   export let value;
   export let error;
   export let autofocus = true;
 </script>
 
-<input class="input{error ? ' error' : ''}" type="text" bind:value={value}  placeholder={placeholder || 'search'} autofocus={autofocus} on:focus={() => dispatch('focus', 'focus')}
-  on:focusout={() => dispatch('focusout', 'focusout')}/>
-
-
 <style type="text/stylus">
+  @require 'styles/colors'
     .input
       width: 100%
       height: 100%
@@ -25,8 +22,14 @@
         box-shadow: none
 
       &.error
-        border-color: red
-
-
-
+        border-color: red;
 </style>
+
+<input
+  class="input{error ? ' error' : ''}"
+  type="text"
+  bind:value
+  placeholder={placeholder || 'Search'}
+  {autofocus}
+  on:focus={() => dispatch('focus', 'focus')}
+  on:focusout={() => dispatch('focusout', 'focusout')} />
