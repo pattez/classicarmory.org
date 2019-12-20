@@ -2,6 +2,10 @@
 <script>
 	import {push} from 'svelte-spa-router';
   import {FRONTEND_URL} from '@/globals';
+  import Icon from "@/components/Icon.svelte";
+  import Search from "@/components/Search.svelte";
+  import ClickOutside from 'svelte-click-outside'
+
   const githubLink = () => {
     window.open('https://github.com/pattez');
   }
@@ -26,7 +30,39 @@
   const stats = () => {
     push('/stats')
   }
+
+  const activateSearch = () => {
+    visible = !visible
+  }
+
+  const onClickOutside = () => {
+    visible = false;
+  }
+
+  const onFocus = () => {
+    focused = true;
+  }
+
+  const onFocusOut = () => {
+    focused = false;
+  }
+
+  let focused = false;
+  let visible = false;
+  let triggerEl;
+  let input = ""
+
+  const handleKeydown = (e) => {
+    if (e.keyCode === 13 && focused && visible && input !== "") {
+      push('/?search=pattez')
+      visible = false;
+      focused = false;
+      input = ''
+    }
+  }
 </script>
+
+<svelte:window on:keydown={handleKeydown}/>
 
 <div class="header">
   <div class="content">
@@ -53,12 +89,18 @@
   </div>
   </div>
   <div class="github">
-    <span>
-      By Pattez
-    </span>
-    <img src="assets/images/github.png" on:click={githubLink}/>
+    <ClickOutside on:clickoutside={onClickOutside} exclude={[triggerEl]}>
+    {#if visible}
+      <div class="search-bar">
+          <Search bind:value={input} on:focus={onFocus} on:focusout={onFocusOut} autofocus={true}/>
+      </div>
+    {/if}
+    </ClickOutside>
+    <div class="search" on:click={activateSearch} bind:this={triggerEl}>
+      <Icon type="search"/>
+    </div>
     <img src="assets/images/discord.png" class="discord" on:click={discordLink}/>
-
+    <img src="assets/images/github.png" on:click={githubLink}/>
   </div>
   </div>
 </div>
@@ -120,10 +162,10 @@
     align-items: center
     height: 100%
 
-  img
+  img, .search
     width: 25px
     height: 25px
-    margin-left: 10px
+    margin-left: 20px
     cursor: pointer
 
     &:hover
@@ -146,5 +188,12 @@
 
   .armory
     font-weight: bold
+
+  .search
+    display: flex
+
+  .search-bar
+    height: 30px
+    font-size: 13px
 
 </style>

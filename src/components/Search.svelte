@@ -1,12 +1,14 @@
 <script>
-  import { onMount } from 'svelte';
+  import { createEventDispatcher } from 'svelte';
+	const dispatch = createEventDispatcher();
   export let placeholder;
   export let value;
   export let error;
   export let autofocus = true;
 </script>
 
-<input class="input{error ? ' error' : ''}" type="text" bind:value={value}  placeholder={placeholder || 'search'} autofocus={autofocus}/>
+<input class="input{error ? ' error' : ''}" type="text" bind:value={value}  placeholder={placeholder || 'search'} autofocus={autofocus} on:focus={() => dispatch('focus', 'focus')}
+  on:focusout={() => dispatch('focusout', 'focusout')}/>
 
 
 <style type="text/stylus">

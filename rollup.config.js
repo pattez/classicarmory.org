@@ -5,6 +5,7 @@ import livereload from 'rollup-plugin-livereload'
 import { terser } from 'rollup-plugin-terser'
 import alias from 'rollup-plugin-alias'
 import babel from 'rollup-plugin-babel';
+import svg from 'rollup-plugin-svg-import';
 
 const path = require('path')
 
@@ -25,6 +26,7 @@ export default {
                 { find: '@', replacement: path.resolve(__dirname, 'src') },
             ],
         }),
+        svg({stringify: true}),
         svelte({
             ...config,
             // ...config.preprocess,
