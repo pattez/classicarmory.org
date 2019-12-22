@@ -1,6 +1,7 @@
 <script>
   import {get} from '@/lib/axios'
   import Loading from '@/components/Loading.svelte';
+  import Error from '@/components/Error.svelte';
   import {SERVERS} from '@/globals'
   let EU_SERVERS = [];
   let US_SERVERS = [];
@@ -90,6 +91,7 @@
     {/each}
   </div>
   {:catch}
+    <Error/>
   {/await}
 </div>
 

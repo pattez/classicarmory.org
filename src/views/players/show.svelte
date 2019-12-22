@@ -11,6 +11,7 @@
   import { get } from "@/lib/axios";
   import Loading from "@/components/Loading.svelte";
   import Search from "@/components/Search.svelte";
+  import Error from "@/components/Error.svelte";
   import Button from "@/components/Button.svelte";
   import { push } from "svelte-spa-router";
   import axios from "axios";
@@ -456,7 +457,7 @@
     </div>
 </div>
   {:catch}
-    ERROR
+    <Error/>
   {/await}
 
 </div>

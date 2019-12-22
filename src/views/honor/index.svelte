@@ -2,6 +2,7 @@
   import Table from '@/components/Table.svelte';
   import Loading from '@/components/Loading.svelte';
   import Dropdown from '@/components/Dropdown.svelte';
+  import Error from '@/components/Error.svelte';
   import {axiosPost} from '@/lib/axios';
   import {formatDate, SERVERS, FRONTEND_URL} from '@/globals'
   import { onMount } from 'svelte';
@@ -176,7 +177,7 @@
   </div>
 </div>
 {:catch}
-  Error
+  <Error/>
 {/await}
 
 
