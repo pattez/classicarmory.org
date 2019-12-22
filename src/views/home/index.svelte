@@ -89,14 +89,14 @@
   onMount(() => {
     document.addEventListener("keyup", async e => {
       if (e.key === "Enter" && input !== "") {
-        push(`/?search=${input}`)
+        push(`/?search=${input}`);
       }
     });
   });
 
   const clickSearch = async () => {
     if (input !== "") {
-      push(`/?search=${input}`)
+      push(`/?search=${input}`);
     }
   };
 
@@ -197,7 +197,7 @@
         </div>
         <div class="info about">
           <span>
-            Classic WoW Armory uses a lightweight addon
+            Classic WoW Armory, created by Pattez, uses a lightweight addon
             <a href={ADDON_URL}>{ADDON_URL}</a>
             to display your character data on
             <a href="https://classicarmory.org">https://classicarmory.org.</a>
