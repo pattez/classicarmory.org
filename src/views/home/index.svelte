@@ -33,10 +33,7 @@
   };
 
   async function getPlayers(o) {
-    if (input || $querystring) {
-      if ($querystring && input === '') {
-        input = parseQuerystring();
-      }
+    if (input) {
       if (lastInput !== input) {
         players = [];
         loading = true;
@@ -91,26 +88,15 @@
 
   onMount(() => {
     document.addEventListener("keyup", async e => {
-      if (e.key === "Enter" && (input !== "" || $querystring !== "")) {
-        if (input === "") {
-          input = parseQuerystring();
-        }
-        if (lastInput === input) {
-          players = [];
-        }
-        offset = 0;
-        await getPlayers(offset);
+      if (e.key === "Enter" && input !== "") {
+        push(`/?search=${input}`)
       }
     });
   });
 
   const clickSearch = async () => {
     if (input !== "") {
-      if (lastInput === input) {
-        players = [];
-      }
-      offset = 0;
-      await getPlayers(offset);
+      push(`/?search=${input}`)
     }
   };
 
