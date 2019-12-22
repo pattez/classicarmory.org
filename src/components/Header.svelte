@@ -188,7 +188,8 @@
           <Search
             bind:value={input}
             on:focus={onFocus}
-            on:focusout={onFocusOut} />
+            on:focusout={onFocusOut}
+            placeholder="Player name or server" />
         </div>
       </ClickOutside>
       <div class="search" on:click={activateSearch} bind:this={triggerEl}>
