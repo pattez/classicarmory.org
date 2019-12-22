@@ -16,6 +16,7 @@
   let offset = 0;
   let showLoadMore = false;
   let loading = false;
+  let searched = false;
   let columns = [
     { name: "", key: "characterSrc", img: true },
     { name: "", key: "classSrc", img: true },
@@ -66,6 +67,7 @@
             : null
       }));
       loading = false;
+      searched = true;
     } else {
       searchError = true;
     }
@@ -177,8 +179,7 @@
 </style>
 
 <div class="content">
-  {#if !loading}
-    {#if players.length === 0}
+  {#if !loading && !searched}
       <div class="form">
         <div class="info">
           <div class="img">
@@ -213,7 +214,7 @@
         </div>
       </div>
     {/if}
-    {#if players.length > 0}
+    {#if searched}
       <div class="players">
         <div class="top">
           <h1>Players</h1>
@@ -237,11 +238,7 @@
         </div>
       </div>
     {/if}
-  {/if}
   {#if loading}
     <Loading />
   {/if}
 </div>
-{#if !loading && players.length === 0}
-  <div class="donations">Donations: 1. Myaka 0.0010 BTC</div>
-{/if}
