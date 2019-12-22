@@ -1,68 +1,79 @@
-
 <script>
-	import {push} from 'svelte-spa-router';
-  import {FRONTEND_URL} from '@/globals';
+  import { push } from "svelte-spa-router";
+  import { FRONTEND_URL } from "@/globals";
+  import Icon from "@/components/Icon.svelte";
+  import Search from "@/components/Search.svelte";
+  import ClickOutside from "svelte-click-outside";
+
   const githubLink = () => {
-    window.open('https://github.com/pattez');
-  }
+    window.open("https://github.com/pattez");
+  };
   const discordLink = () => {
-    window.open('https://discord.gg/cVDp6en');
-  }
+    window.open("https://discord.gg/cVDp6en");
+  };
 
   const home = () => {
-    push('/')
+    push("/");
   };
 
   const donate = () => {
-    push('/donate')
-  }
+    push("/donate");
+  };
 
   const honor = () => {
-    push('/honor')
-  }
+    push("/honor");
+  };
   const upload = () => {
-    push('/upload')
-  }
+    push("/upload");
+  };
   const stats = () => {
-    push('/stats')
-  }
+    push("/stats");
+  };
+
+  const activateSearch = () => {
+    const searchBar = document.querySelector(".search-bar");
+    const searchEl = searchBar.children[0];
+    searchEl.focus();
+
+    if (!visible) {
+      visible = true;
+    } else {
+      search();
+    }
+  };
+
+  const onClickOutside = () => {
+    visible = false;
+  };
+
+  const onFocus = () => {
+    focused = true;
+  };
+
+  const onFocusOut = () => {
+    focused = false;
+  };
+
+  let focused = false;
+  let visible = false;
+  let triggerEl;
+  let input = "";
+
+  const search = () => {
+    if (focused && visible && input !== "") {
+      push(`/?search=${input}`);
+      visible = false;
+      focused = false;
+      input = "";
+    }
+  };
+
+  const handleKeydown = e => {
+    if (e.keyCode === 13) {
+      search();
+    }
+  };
 </script>
-
-<div class="header">
-  <div class="content">
-  <div class="title">
-  <div class="text" on:click={home}>
-    <span class="armory">
-    Classic WoW Armory
-    <span class="beta">
-      Beta
-    </span>
-    </span>
-  </div>
-  <div class="honor" on:click={honor}>
-    Honor
-  </div>
-  <div class="upload" on:click={stats}>
-    Stats
-  </div>
-  <div class="upload" on:click={upload}>
-    Upload
-  </div>
-  <div class="upload" on:click={donate}>
-    Donate
-  </div>
-  </div>
-  <div class="github">
-    <span>
-      By Pattez
-    </span>
-    <img src="assets/images/github.png" on:click={githubLink}/>
-    <img src="assets/images/discord.png" class="discord" on:click={discordLink}/>
-
-  </div>
-  </div>
-</div>
-
 
 <style lang="stylus">
   @require 'styles/colors'
@@ -120,10 +131,10 @@
     align-items: center
     height: 100%
 
-  img
+  img, .search
     width: 25px
     height: 25px
-    margin-left: 10px
+    margin-left: 20px
     cursor: pointer
 
     &:hover
@@ -147,4 +158,48 @@
   .armory
     font-weight: bold
 
+  .search
+    display: flex
+
+  .search-bar
+    height: 30px
+    font-size: 13px;
 </style>
+
+<svelte:window on:keydown={handleKeydown} />
+
+<div class="header">
+  <div class="content">
+    <div class="title">
+      <div class="text" on:click={home}>
+        <span class="armory">
+          Classic WoW Armory
+          <span class="beta">Beta</span>
+        </span>
+      </div>
+      <div class="honor" on:click={honor}>Honor</div>
+      <div class="upload" on:click={stats}>Stats</div>
+      <div class="upload" on:click={upload}>Upload</div>
+      <div class="upload" on:click={donate}>Donate</div>
+    </div>
+    <div class="github">
+      <ClickOutside on:clickoutside={onClickOutside} exclude={[triggerEl]}>
+        <div class="search-bar" style="opacity:{`${visible ? '1' : '0'}`}">
+          <Search
+            bind:value={input}
+            on:focus={onFocus}
+            on:focusout={onFocusOut}
+            placeholder="Player name or server" />
+        </div>
+      </ClickOutside>
+      <div class="search" on:click={activateSearch} bind:this={triggerEl}>
+        <Icon type="search" />
+      </div>
+      <img
+        src="assets/images/discord.png"
+        class="discord"
+        on:click={discordLink} />
+      <img src="assets/images/github.png" on:click={githubLink} />
+    </div>
+  </div>
+</div>
