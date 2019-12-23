@@ -104,7 +104,7 @@
 
   const checkQueryString = async () => {
     if ($querystring && $querystring.includes("search")) {
-      input = parseQuerystring();
+      input = decodeURIComponent(parseQuerystring());
       offset = 0;
       await getPlayers(offset);
     }
