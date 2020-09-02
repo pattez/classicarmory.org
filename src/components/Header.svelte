@@ -177,28 +177,8 @@
           <span class="beta">Beta</span>
         </span>
       </div>
-      <div class="honor" on:click={honor}>Honor</div>
-      <div class="upload" on:click={stats}>Stats</div>
-      <div class="upload" on:click={upload}>Upload</div>
-      <div class="upload" on:click={donate}>Donate</div>
     </div>
     <div class="github">
-      <ClickOutside on:clickoutside={onClickOutside} exclude={[triggerEl]}>
-        <div class="search-bar" style="opacity:{`${visible ? '1' : '0'}`}">
-          <Search
-            bind:value={input}
-            on:focus={onFocus}
-            on:focusout={onFocusOut}
-            placeholder="Player name or server" />
-        </div>
-      </ClickOutside>
-      <div class="search" on:click={activateSearch} bind:this={triggerEl}>
-        <Icon type="search" />
-      </div>
-      <img
-        src="assets/images/discord.png"
-        class="discord"
-        on:click={discordLink} />
       <img src="assets/images/github.png" on:click={githubLink} />
     </div>
   </div>

@@ -110,6 +110,10 @@
     }
   };
 
+  const githubLink = () => {
+    window.open("https://github.com/pattez/classicarmory.org");
+  };
+
   $: {
     if ($querystring) {
       checkQueryString();
@@ -119,6 +123,13 @@
 
 <style lang="stylus" scoped>
   @require 'styles/colors'
+
+
+  .logo
+    cursor: pointer
+
+    &:hover
+      opacity: 0.7
 
   a
     color: $primary-4
@@ -158,10 +169,10 @@
   .info
     width: 1000px
     text-align: center
-    margin-bottom: 40px
+    margin-bottom: 20px
 
     &.about
-      margin-top: 40px
+      margin-top: 20px
 
   .top
     margin-bottom: 30px
@@ -187,54 +198,25 @@
           </div>
           <div class="title">Classic WoW Armory</div>
         </div>
-        <div class="search">
-          <Search
-            placeholder="Player name or server"
-            bind:value={input}
-            error={searchError} />
-        </div>
-        <div class="button">
-          <Button text="search" on:click={clickSearch} />
+        <div class="info about">
+          <span>
+            Classic WoW Armory
+            <a href="https://classicarmory.org">https://classicarmory.org</a>
+             has come to an end
+          </span>
         </div>
         <div class="info about">
           <span>
-            Classic WoW Armory, created by Pattez, uses a lightweight addon
-            <a href={ADDON_URL}>{ADDON_URL}</a>
-            to display your character data on
-            <a href="https://classicarmory.org">https://classicarmory.org.</a>
+            To all the people that helped with this project
           </span>
+        </div>
+        <div class="info about">
           <span>
-            We are currently in a beta phase of development. If you wish to read
-            more on how to upload go to
-            <a href={`${FRONTEND_URL}/#/upload`}>
-              {`${FRONTEND_URL}/#/upload`}
-            </a>
-            <span />
+           Thank you &#128522;
           </span>
         </div>
-      </div>
-    {/if}
-    {#if searched}
-      <div class="players">
-        <div class="top">
-          <h1>Players</h1>
-          <div class="search">
-            <Search
-              placeholder="pattez gehennas"
-              bind:value={input}
-              error={searchError} />
-          </div>
-          <div class="button after">
-            <Button text="search" on:click={clickSearch} />
-          </div>
-        </div>
-        <div class="table">
-          <Table
-            items={players}
-            {columns}
-            on:click={playerClick}
-            {showLoadMore}
-            on:load-more={fetchMore} />
+        <div class="info about">
+          <img class="logo" src="assets/images/github.png" on:click={githubLink} />
         </div>
       </div>
     {/if}
